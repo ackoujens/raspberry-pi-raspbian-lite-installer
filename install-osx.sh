@@ -7,7 +7,7 @@
 set -e
 
 # Horizontal line
-_hline="------------------------------------------------------------------------------------"
+_hLine = "------------------------------------------------------------------------------------"
 
 # Colorized INFO output
 function _info() {
@@ -23,7 +23,7 @@ function _warn() {
   echo -e "${COLOR}${@}${RESET}"
 }
 
-# Introduction (expressed in INFO colors)
+# Introduction (Font: Doom)
 _info '
 ______          _     _               _     _ _             __     ___________
 | ___ \        | |   (_)             | |   (_) |            \ \   /  ___|  _  \
@@ -33,3 +33,7 @@ ______          _     _               _     _ _             __     ___________
 \_| \_\__,_|___/_.__/|_|\__,_|_| |_| \_____/_|\__\___|      /_/   \____/|___/
 
 '
+
+# Retrieving to be instaled image
+_info '- Downloading latest Raspbian Lite image'
+wget 'https://downloads.raspberrypi.org/raspbian_lite_latest'

@@ -6,8 +6,8 @@ Install Raspbian to your SD card quick and stop doing this repetitive task now !
 
 ## Features
 - OSX Terminal compatible
+- Downloads latest Rasbian Lite image from raspberrypi.org
 
 ## Todo
-- Downloads latest Rasbian Lite image from raspberrypi.org
 - Windows CMD/Powershell testing
 - Linux Terminal testing
