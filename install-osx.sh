@@ -68,9 +68,10 @@ fi
 
 
 # ================================================
-# TODO: Unzip image
+# EXTRACTING IMAGE
 # ================================================
-
+_info '  - Extracting image'
+unzip -p $_imagePath > image
 
 
 # ================================================
@@ -151,16 +152,16 @@ done
 _rawdisk=$( echo $_sdCardDisk | awk 'sub("..$", "")' | sed 's/disk/rdisk/')
 
 # Unmount Disk
-_info "- Unmounting Disk"
+_info "  - Unmounting Disk"
 diskutil unmountDisk $_sdCardDisk
 
-_info "- Writing image"
-_info "*** Ctrl+T to see progress ***"
-sudo dd bs=1m if=${_imagePath} of=${_rawdisk}
+_info "  - Writing image"
+_info "  *** Ctrl+T to see progress ***"
+sudo dd bs=1m if=image of=$_rawdisk
 
 # Eject disk
 _info "- Ejecting Disk"
-diskutil eject ${_rawdisk}
+diskutil eject $_rawdisk
 
 _info "- Disk safely removed"
 _info "- - - INSTALL COMPLETE - - -"
