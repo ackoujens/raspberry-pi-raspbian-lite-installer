@@ -68,6 +68,12 @@ fi
 
 
 # ================================================
+# TODO: Unzip image
+# ================================================
+
+
+
+# ================================================
 # SELECTING TARGET
 # ================================================
 _info '\n- Selecting target disk'
@@ -135,3 +141,26 @@ while true; do
     esac
 done
   _info "  - Target disk selected [✓]"
+
+
+
+# ================================================
+# INSTALLATION PROCEDURE
+# ================================================
+# Format disk name to raw format
+_rawdisk=$( echo $_sdCardDisk | awk 'sub("..$", "")' | sed 's/disk/rdisk/')
+
+# Unmount Disk
+_info "- Unmounting Disk"
+diskutil unmountDisk $_sdCardDisk
+
+_info "- Writing image"
+_info "*** Ctrl+T to see progress ***"
+sudo dd bs=1m if=${_imagePath} of=${_rawdisk}
+
+# Eject disk
+_info "- Ejecting Disk"
+diskutil eject ${_rawdisk}
+
+_info "- Disk safely removed"
+_info "- - - INSTALL COMPLETE - - -"
