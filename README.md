@@ -8,6 +8,12 @@ Install Raspbian to your SD card quick and stop doing this repetitive task now !
 - Execute script using the terminal command
 `sh install-osx.sh`
 - Follow instructions printed in the terminal
+- Put the SD Card in your raspberry pi
+- Power your raspberry pi while connected to an ethernet cable
+- Open a terminal on your mac
+- `ssh pi@<RaspberryPiIP>`
+(I found the RPI's ip by logging in into my router where it was connect to)
+- "raspberry" is the default password when connecting the first time
 
 ## Features
 - OSX Terminal compatible
@@ -20,3 +26,4 @@ Install Raspbian to your SD card quick and stop doing this repetitive task now !
 - Linux Terminal implementation
 - SD Card formatting
 - SD Card detection after previous flash attempt
+- Create an `ssh` file on the sd card after Raspbian install
