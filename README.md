@@ -11,7 +11,7 @@ Install Raspbian to your SD card quick and stop doing this repetitive task now !
 - Put the SD Card in your raspberry pi
 - Power your raspberry pi while connected to an ethernet cable
 - Open a terminal on your mac
-- `ssh pi@<RaspberryPiIP>`
+- `sudo ssh pi@<RaspberryPiIP>`
 (I found the RPI's ip by logging in into my router where it was connect to)
 - "raspberry" is the default password when connecting the first time
 
@@ -27,3 +27,5 @@ Install Raspbian to your SD card quick and stop doing this repetitive task now !
 - SD Card formatting
 - SD Card detection after previous flash attempt
 - Create an `ssh` file on the sd card after Raspbian install
+- Customize /etc/rc.local (user introduction screen)
+- Detect if downloaded image is already present to prevent multiple downloads of the same file
