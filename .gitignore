@@ -1,5 +1,5 @@
 *.DS_Store
 *.img
 *.zip
-raspbian_lite_latest
+raspbian_lite_latest*
 image
