@@ -33,7 +33,7 @@ function _warn() {
 _info '
 ____________ _
 | ___ \ ___ (_)
-| |_/ / |_/ /_ 
+| |_/ / |_/ /_
 |    /|  __/| |
 | |\ \| |   | |
 \_| \_\_|   |_|
@@ -60,7 +60,7 @@ ______                _     _
 # RPI IMAGE RETRIEVAL
 # ================================================
 _info '- Downloading latest Raspbian Lite image'
-#wget 'https://downloads.raspberrypi.org/raspbian_lite_latest'
+wget 'https://downloads.raspberrypi.org/raspbian_lite_latest'
 
 # Set image path
 # TODO Insert filename in variable from wget download
