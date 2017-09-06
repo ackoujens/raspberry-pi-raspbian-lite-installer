@@ -8,9 +8,7 @@
 # ================================================
 # SCRIPT SETUP
 # ================================================
-
-# Quit on error
-set -e
+clear
 
 # Horizontal line
 _hLine="------------------------------------------------------------------------------------"
@@ -60,7 +58,7 @@ ______                _     _
 # RPI IMAGE RETRIEVAL
 # ================================================
 _info '- Downloading latest Raspbian Lite image'
-wget 'https://downloads.raspberrypi.org/raspbian_lite_latest'
+#wget 'https://downloads.raspberrypi.org/raspbian_lite_latest'
 
 # Set image path
 # TODO Insert filename in variable from wget download
@@ -162,16 +160,40 @@ done
 # ================================================
 # INSTALLATION PROCEDURE
 # ================================================
+function unmount() {
+  mounted=1
+  while [ ${mounted} = 1 ]; do
+    if [[ $(mount | awk '$3 == "/Volumes/boot" {print $3}') != "" ]]; then
+      _info "/Volumes/boot is mounted"
+      _info "  - Unmounting Disk"
+      diskutil unmountDisk $_sdCardDisk
+    else
+      _info "/Volumes/boot is unmounted"
+      mounted=0
+    fi
+  done
+}
+
 # Format disk name to raw format
 _rawdisk=$( echo $_sdCardDisk | awk 'sub("..$", "")' | sed 's/disk/rdisk/')
 
-# Unmount Disk
-_info "  - Unmounting Disk"
-diskutil unmountDisk $_sdCardDisk
+# Unmount volume for formatting
+unmount
+
+# Erase storage
+sudo diskutil eraseDisk FAT32 boot MBRFormat $_rawdisk
+
+# Unmount volume for flashing
+unmount
 
 _info "  - Writing image"
 _info "  *** Ctrl+T to see progress ***"
 sudo dd bs=1m if=image of=$_rawdisk
+
+# Enable SSH
+_info "  - Enabling SSH"
+cd /Volumes/boot
+touch ssh
 
 # Eject disk
 _info "- Ejecting Disk"

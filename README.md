@@ -7,7 +7,7 @@ Install Raspbian to your SD card quick and stop doing this repetitive task now !
 2. Format SD Card (Tested on FAT partitioning)
 3. Execute script using the terminal command
 
-`sh install-osx.sh`
+`sudo sh install-osx.sh`
 (note: you'll need to be in the same directory as the script)
 
 4. Follow instructions printed in the terminal
@@ -25,12 +25,12 @@ Default password: raspberry
 - Downloads latest Rasbian Lite image from raspberrypi.org
 - Safety measures to prevent ruining operating your system drive
 - Error checking every step of the install for easier debugging
+- Integrated SD Card formatting
+- Automatically create an `ssh` file on the sd card after the Raspbian install
 
 ## Todo
 - Windows CMD/Powershell implementation
 - Linux Terminal implementation
-- Integrated SD Card formatting
 - SD Card detection after previous flash attempt
-- Automatically create an `ssh` file on the sd card after the Raspbian install
 - Detect if downloaded image is already present to prevent multiple downloads of the same file
 - Prompt to download a fresh image or continue with the currently present one
