@@ -58,7 +58,8 @@ ______                _     _
 # RPI IMAGE RETRIEVAL
 # ================================================
 _info '- Downloading latest Raspbian Lite image'
-#wget 'https://downloads.raspberrypi.org/raspbian_lite_latest'
+sudo rm raspbian_lite_latest
+wget 'https://downloads.raspberrypi.org/raspbian_lite_latest'
 
 # Set image path
 # TODO Insert filename in variable from wget download
@@ -83,6 +84,7 @@ fi
 # EXTRACTING IMAGE
 # ================================================
 _info '  - Extracting image'
+sudo rm image
 unzip -p $_imagePath > image
 
 
@@ -164,11 +166,13 @@ function unmount() {
   mounted=1
   while [ ${mounted} = 1 ]; do
     if [[ $(mount | awk '$3 == "/Volumes/boot" {print $3}') != "" ]]; then
-      _info "/Volumes/boot is mounted"
-      _info "  - Unmounting Disk"
-      diskutil unmountDisk $_sdCardDisk
+      _info '/Volumes/boot is mounted'
+      _info '  - Unmounting Disk'
+      sudo diskutil unmount $_sdCardDisk
+      sudo diskutil unmountDisk $_sdCardDisk
+
     else
-      _info "/Volumes/boot is unmounted"
+      _info '/Volumes/boot is unmounted'
       mounted=0
     fi
   done
